@@ -11,17 +11,17 @@ namespace OneTrueError.Client.Wpf.Demo
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+public partial class App : Application
+{
+    protected override void OnStartup(StartupEventArgs e)
     {
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            var url = new Uri("http://localhost/onetrueerror/");
-            OneTrue.Configuration.Credentials(url, "yourAppKey", "yourSharedSecret");
-            OneTrue.Configuration.CatchWpfExceptions();
-            OneTrue.Configuration.UserInteraction.AskUserForDetails = true;
-            OneTrue.Configuration.UserInteraction.AskUserForPermission = true;
-            OneTrue.Configuration.UserInteraction.AskForEmailAddress = true;
-            base.OnStartup(e);
-        }
+        var url = new Uri("http://localhost/onetrueerror/");
+        OneTrue.Configuration.Credentials(url, "yourAppKey", "yourSharedSecret");
+        OneTrue.Configuration.CatchWpfExceptions();
+        OneTrue.Configuration.UserInteraction.AskUserForDetails = true;
+        OneTrue.Configuration.UserInteraction.AskUserForPermission = true;
+        OneTrue.Configuration.UserInteraction.AskForEmailAddress = true;
+        base.OnStartup(e);
     }
+}
 }

@@ -105,9 +105,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Nuget\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\OneTrueError.Client.Wpf\OneTrueError.Client.Wpf.csproj">
       <Project>{2f6212f0-a23f-4bd9-8fd1-52ee0522894e}</Project>
       <Name>OneTrueError.Client.Wpf</Name>
