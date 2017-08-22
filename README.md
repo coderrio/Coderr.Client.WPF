@@ -10,16 +10,7 @@ To report exceptions manually, use `OneTrue.Report(exception)` to allow OneTrueE
 This library includes the following context collections for every reported exceptions:
 
 * All in the [core library](https://github.com/onetrueerror/onetrueerror.client)
-* All in the [asp.net library](https://github.com/onetrueerror/onetrueerror.client.aspnet)
-* Action parameters
-* Controller information
-* ModelState
-* Query stirng
-* RouteData
-* Session data
-* TempData
-* Uploaded files
-* ViewBag
+* Information about all open windows
 
 # Getting started
 
