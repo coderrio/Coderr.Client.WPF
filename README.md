@@ -1,41 +1,70 @@
-Integration library for WPF applications
-==========================
+Integration library WPF
+=======================
 
-This library will detect all unhandled exceptions in WPF-based applications and report them to your OneTrueError server (or your account at https://onetrueerror.com).
+[![VSTS](https://1tcompany.visualstudio.com/_apis/public/build/definitions/75570083-b1ef-4e78-88e2-5db4982f756c/17/badge)]() [![NuGet](https://img.shields.io/nuget/dt/codeRR.Client.Wpf.svg?style=flat-square)]()
 
-To report exceptions manually, use `OneTrue.Report(exception)` to allow OneTrueError to include context data.
+This library will detect all unhandled exceptions in WPF based applications and report them to your codeRR server (or your account at https://coderrapp.com).
 
-# Context collections
+For more information about codeRR, visit our [homepage](https://coderrapp.com).
 
-This library includes the following context collections for every reported exceptions:
+# Installation
 
-* All in the [core library](https://github.com/onetrueerror/onetrueerror.client)
-* Information about all open windows
-
-# Getting started
-
-1. Download and install the [OneTrueError server](https://github.com/onetrueerror/onetrueerror.server) or create an account at [OneTrueError.com](https://onetrueerror.com)
-2. Install this client library (using nuget `onetrueerror.client.wpf`)
-3. Configure the credentials from your OneTrueError account in your `App.xaml.cs`
-4. Add `OneTrue.Configuration.CatchWpfExceptions()` in your `App.xaml.cs`
+1. Download and install the [codeRR server](https://github.com/coderrapp/coderr.server) or create an account at [coderrapp.com](https://coderrapp.com)
+2. Install this client library (using nuget `coderr.client.wpf`)
+3. Configure the credentials from your codeRR account in your `App.xaml.cs`.
 
 ```csharp
 public partial class App : Application
 {
-    protected override void OnStartup(StartupEventArgs e)
-    {
-        var url = new Uri("http://localhost/onetrueerror/");
-        OneTrue.Configuration.Credentials(url, "yourAppKey", "yourSharedSecret");
-        OneTrue.Configuration.CatchWpfExceptions();
-		
-		//extra config options
-        OneTrue.Configuration.UserInteraction.AskUserForDetails = true;
-        OneTrue.Configuration.UserInteraction.AskUserForPermission = true;
-        OneTrue.Configuration.UserInteraction.AskForEmailAddress = true;
-		
-        base.OnStartup(e);
-    }
+	protected override void OnStartup(StartupEventArgs e)
+	{
+
+		// codeRR configuration
+		var uri = new Uri("https://report.coderrapp.com/");
+		Err.Configuration.Credentials(uri,
+			"yourAppKey",
+			"yourSharedSecret");
+
+		// to catch unhandled exceptions
+		Err.Configuration.CatchWpfExceptions();
+
+		// different types of configuration options
+		Err.Configuration.UserInteraction.AskUserForDetails = true;
+		Err.Configuration.UserInteraction.AskUserForPermission = true;
+		Err.Configuration.UserInteraction.AskForEmailAddress = true;
+
+
+		base.OnStartup(e);
+	}
 }
 ```
 
-Done.
+# Getting started
+
+Simply catch an exception and report it:
+
+```csharp
+public void UpdatePost(int uid, ForumPost post)
+{
+	try
+	{
+		_service.Update(uid, post);
+	}
+	catch (Exception ex)
+	{
+		Err.Report(ex, new{ UserId = uid, ForumPost = post });
+	}
+}
+```
+
+The context information will be attached as:
+
+![](https://coderrapp.com/images/features/custom-context.png)
+
+[Read more...](https://coderrapp.com/features/)
+
+# More information
+
+* [Questions/Help](http://discuss.coderrapp.com)
+* [Documentation](https://coderrapp.com/documentation/client/libraries/wpf/)
+
