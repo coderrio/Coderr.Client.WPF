@@ -63,6 +63,10 @@ The context information will be attached as:
 
 [Read more...](https://coderrapp.com/features/)
 
+# Requirements
+
+You need to either install [codeRR Community Server](https://github.com/coderrapp/coderr.server) or use [codeRR Live](https://coderrapp.com/live).
+
 # More information
 
 * [Questions/Help](http://discuss.coderrapp.com)
