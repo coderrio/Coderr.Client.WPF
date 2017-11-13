@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using codeRR.Client.ContextProviders;
 using codeRR.Client.Contracts;
 using codeRR.Client.Reporters;
+using codeRR.Client.Wpf.Contexts;
+using codeRR.Client.Wpf.Utils;
 
 namespace codeRR.Client.Wpf.ContextProviders
 {
@@ -18,10 +20,7 @@ namespace codeRR.Client.Wpf.ContextProviders
         /// <summary>
         ///     Returns <c>OpenWindows</c>.
         /// </summary>
-        public string Name
-        {
-            get { return "OpenWindows"; }
-        }
+        public string Name => "OpenWindows";
 
         /// <summary>
         ///     Collect information
@@ -32,54 +31,60 @@ namespace codeRR.Client.Wpf.ContextProviders
         /// </returns>
         public ContextCollectionDTO Collect(IErrorReporterContext context)
         {
-            var values = new Dictionary<string, string>();
+            var ctx = context as WpfErrorReportContext;
+            if (ctx?.Windows == null)
+                return null;
 
+            var values = new Dictionary<string, string>();
             var invocationRequired = false;
-            foreach (Window window in Application.Current.Windows)
+            foreach (Window window in ctx.Windows)
             {
                 if (!window.CheckAccess())
-                {
                     invocationRequired = true;
-                }
             }
             if (invocationRequired)
             {
-                Application.Current.Dispatcher.VerifyAccess();
+                ctx.Dispatcher.VerifyAccess();
                 return new ContextCollectionDTO(Name,
-                    new Dictionary<string, string> {{"Error", "Collection on non-UI thread" } });
+                    new Dictionary<string, string> {{"Error", "Collection on non-ui thread"}});
             }
 
             try
             {
-                return Collect(values);
+                return Collect(ctx, values);
             }
             catch (Exception exception)
             {
                 return new ContextCollectionDTO(Name,
                     new Dictionary<string, string>
                     {
-                        {"Error", "Collection on non-UI thread"},
+                        {"Error", "Collection on non-ui thread"},
                         {"Exception", exception.ToString()}
                     });
             }
         }
 
-        private ContextCollectionDTO Collect(Dictionary<string, string> values)
+        private ContextCollectionDTO Collect(WpfErrorReportContext ctx, Dictionary<string, string> formCollection)
         {
+            var index = 0;
             var variables = new StringBuilder();
-            foreach (Window window in Application.Current.Windows)
+            foreach (Window window in ctx.Windows)
             {
+                if (window?.GetType().Name == "AdornerLayerWindow")
+                    continue;
+                index++;
+
                 var fields =
                     window.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 foreach (var field in fields)
                 {
+                    if (field.FieldType.Namespace.StartsWith("Microsoft.VisualStudio.DesignTools"))
+                        continue;
                     if (typeof(Control).IsAssignableFrom(field.FieldType))
                     {
-                        var control = (Control)field.GetValue(window);
+                        var control = (Control) field.GetValue(window);
                         if (control != null)
-                        {
                             variables.AppendFormat("{1} = {2} [{0}];;", field.FieldType, field.Name, control.Name);
-                        }
                     }
                     else
                     {
@@ -89,20 +94,21 @@ namespace codeRR.Client.Wpf.ContextProviders
                 }
 
                 var properties =
-                    window.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                    window.GetType()
+                        .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 foreach (var property in properties)
                 {
+                    if (property.PropertyType.Namespace.StartsWith("Microsoft.VisualStudio.DesignTools"))
+                        continue;
                     if (!property.CanRead || property.GetIndexParameters().Length > 0)
                         continue;
 
                     if (typeof(Control).IsAssignableFrom(property.PropertyType))
                     {
-                        var control = (Control)property.GetValue(window, null);
+                        var control = (Control) property.GetValue(window, null);
                         if (control != null)
-                        {
                             variables.AppendFormat("{1} = {2} [{0}];;", property.PropertyType, property.Name,
                                 control.Name);
-                        }
                     }
                     else
                     {
@@ -111,25 +117,21 @@ namespace codeRR.Client.Wpf.ContextProviders
                     }
                 }
 
+                var name = window.GenerateName(formCollection, index);
 
-                if (values.ContainsKey(window.Name))
+                // Protect against windows with lots of stuff.
+                if (variables.Length > 1000000)
                 {
-                    for (var i = 0; i < 100; i++)
-                    {
-                        if (values.ContainsKey(window.Name + "_" + i))
-                            continue;
-
-                        values.Add(window.Name + "_" + i, variables.ToString());
-                    }
+                    variables.Clear();
+                    continue;
                 }
-                else
-                    values.Add(window.Name, variables.ToString());
 
+                formCollection.Add(name, variables.ToString());
                 variables.Clear();
             }
 
 
-            return new ContextCollectionDTO(Name, values);
+            return new ContextCollectionDTO(Name, formCollection);
         }
     }
 }

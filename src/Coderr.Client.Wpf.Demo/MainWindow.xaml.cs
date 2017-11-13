@@ -10,6 +10,8 @@ namespace codeRR.Client.Wpf.Demo
     {
         public MainWindow()
         {
+
+
             InitializeComponent();
         }
 

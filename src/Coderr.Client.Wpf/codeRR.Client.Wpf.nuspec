@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>codeRR.Client.WPF</id>
+    <version>$version$</version>
+    <title>WPF integration package for codeRR</title>
+    <authors>jgauffin</authors>
+    <owners>1TCompany AB</owners>
+    <licenseUrl>https://raw.githubusercontent.com/coderrapp/codeRR.Client.WPF/master/LICENSE</licenseUrl>
+    <projectUrl>https://coderrapp.com</projectUrl>
+    <PackageIconUrl>http://coderrapp.com/images/nuget_icon.png</PackageIconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Detects and analyzes exceptions in WPF applications. Know where, why and when exceptions are thrown.</description>
+    <releaseNotes>First version.</releaseNotes>
+    <Copyright>Copyright 2017 © 1TCompany AB. All rights reserved.</Copyright>
+    <PackageTags>logger logging exceptions analysis WPF</PackageTags>
+  </metadata>
+</package>

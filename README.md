@@ -16,26 +16,26 @@ For more information about codeRR, visit our [homepage](https://coderrapp.com).
 ```csharp
 public partial class App : Application
 {
-	protected override void OnStartup(StartupEventArgs e)
-	{
+    protected override void OnStartup(StartupEventArgs e)
+    {
 
-		// codeRR configuration
-		var uri = new Uri("https://report.coderrapp.com/");
-		Err.Configuration.Credentials(uri,
-			"yourAppKey",
-			"yourSharedSecret");
+        // codeRR configuration
+        var uri = new Uri("https://report.coderrapp.com/");
+        Err.Configuration.Credentials(uri,
+            "yourAppKey",
+            "yourSharedSecret");
 
-		// to catch unhandled exceptions
-		Err.Configuration.CatchWpfExceptions();
+        // to catch unhandled exceptions
+        Err.Configuration.CatchWpfExceptions();
 
-		// different types of configuration options
-		Err.Configuration.UserInteraction.AskUserForDetails = true;
-		Err.Configuration.UserInteraction.AskUserForPermission = true;
-		Err.Configuration.UserInteraction.AskForEmailAddress = true;
+        // different types of configuration options
+        Err.Configuration.UserInteraction.AskUserForDetails = true;
+        Err.Configuration.UserInteraction.AskUserForPermission = true;
+        Err.Configuration.UserInteraction.AskForEmailAddress = true;
 
 
-		base.OnStartup(e);
-	}
+        base.OnStartup(e);
+    }
 }
 ```
 
@@ -46,14 +46,14 @@ Simply catch an exception and report it:
 ```csharp
 public void UpdatePost(int uid, ForumPost post)
 {
-	try
-	{
-		_service.Update(uid, post);
-	}
-	catch (Exception ex)
-	{
-		Err.Report(ex, new{ UserId = uid, ForumPost = post });
-	}
+    try
+    {
+        _service.Update(uid, post);
+    }
+    catch (Exception ex)
+    {
+        Err.Report(ex, new{ UserId = uid, ForumPost = post });
+    }
 }
 ```
 

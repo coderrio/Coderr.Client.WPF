@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace codeRR.Client.Wpf.Demo
@@ -15,16 +10,15 @@ namespace codeRR.Client.Wpf.Demo
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            // configuring the connection to the codeRR server.
-            var uri = new Uri("http://localhost:50473/");
-            Err.Configuration.Credentials(uri,
-                "5f219f356daa40b3b31dfc67514df6d6",
-                "22612e4444f347d1bb3d841d64c9750a");
+            var url = new Uri("http://localhost:50473/");
+            Err.Configuration.Credentials(url,
+                "fda370d3a4444964b52d785a9b26fe21",
+                "c3f786f9205c4572b5bbe4cfb81ba4f0");
 
-            // for automated handling
             Err.Configuration.CatchWpfExceptions();
+            Err.Configuration.MarkExceptionsAsHandled();
+            Err.Configuration.TakeScreenshots();
 
-            // configuring the error window
             Err.Configuration.UserInteraction.AskUserForDetails = true;
             Err.Configuration.UserInteraction.AskUserForPermission = true;
             Err.Configuration.UserInteraction.AskForEmailAddress = true;

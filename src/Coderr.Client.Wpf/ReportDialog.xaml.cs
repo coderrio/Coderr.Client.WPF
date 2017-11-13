@@ -1,7 +1,6 @@
 ﻿using System;
-using codeRR.Client.Wpf.Utils;
-using codeRR.Client;
 using codeRR.Client.Contracts;
+using codeRR.Client.Wpf.Utils;
 
 namespace codeRR.Client.Wpf
 {

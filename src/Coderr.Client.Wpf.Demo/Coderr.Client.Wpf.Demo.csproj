@@ -104,9 +104,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Coderr.Client.Wpf\Coderr.Client.Wpf.csproj">
+    <ProjectReference Include="..\OneTrueError.Client.Wpf\codeRR.Client.Wpf.csproj">
       <Project>{2f6212f0-a23f-4bd9-8fd1-52ee0522894e}</Project>
-      <Name>Coderr.Client.Wpf</Name>
+      <Name>codeRR.Client.Wpf</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
