@@ -15,4 +15,7 @@
     <Copyright>Copyright 2017 © 1TCompany AB. All rights reserved.</Copyright>
     <PackageTags>logger logging exceptions analysis WPF</PackageTags>
   </metadata>
+  <dependencies>
+    <dependency id="Coderr.Client" version="1.0.6" />
+  </dependencies>
 </package>
