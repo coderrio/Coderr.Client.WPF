@@ -11,7 +11,7 @@
     <PackageIconUrl>http://coderrapp.com/images/nuget_icon.png</PackageIconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Detects and analyzes exceptions in WPF applications. Know where, why and when exceptions are thrown.</description>
-    <releaseNotes>First version.</releaseNotes>
+    <releaseNotes>Refactored, added the screenshot and the view model collection.</releaseNotes>
     <Copyright>Copyright 2017 © 1TCompany AB. All rights reserved.</Copyright>
     <PackageTags>logger logging exceptions analysis WPF</PackageTags>
   </metadata>

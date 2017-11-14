@@ -41,6 +41,7 @@ namespace codeRR.Client.Wpf.ContextProviders
             {
                 if (!window.CheckAccess())
                     invocationRequired = true;
+                
             }
             if (invocationRequired)
             {

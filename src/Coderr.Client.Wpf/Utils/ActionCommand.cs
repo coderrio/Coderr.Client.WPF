@@ -3,18 +3,21 @@ using System.Windows.Input;
 
 namespace codeRR.Client.Wpf.Utils
 {
-    internal class ActionCommand : ICommand
+    public class ActionCommand : ICommand
     {
         private readonly Action _action;
 
         public ActionCommand(Action action)
         {
             _action = action;
+            CanExecuteFlag = true;
         }
+
+        public bool CanExecuteFlag { get; set; }
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return CanExecuteFlag;
         }
 
         public void Execute(object parameter)
@@ -22,6 +25,9 @@ namespace codeRR.Client.Wpf.Utils
             _action();
         }
 
+        /// <summary>
+        /// Use the <see cref="CanExecuteFlag"/> to change internal state
+        /// </summary>
         public event EventHandler CanExecuteChanged;
     }
 }

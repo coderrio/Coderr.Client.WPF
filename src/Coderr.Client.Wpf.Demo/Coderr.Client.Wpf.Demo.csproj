@@ -66,12 +66,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\CommentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Helpers\ActionCommand.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ObservableObject.cs" />
+    <Compile Include="ViewModels\CommentViewModel.cs" />
+    <Compile Include="Views\CommentView.xaml.cs">
+      <DependentUpon>CommentView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -104,7 +114,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OneTrueError.Client.Wpf\codeRR.Client.Wpf.csproj">
+    <ProjectReference Include="..\Coderr.Client.Wpf\Coderr.Client.Wpf.csproj">
       <Project>{2f6212f0-a23f-4bd9-8fd1-52ee0522894e}</Project>
       <Name>codeRR.Client.Wpf</Name>
     </ProjectReference>

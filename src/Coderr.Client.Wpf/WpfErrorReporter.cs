@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Navigation;
 using System.Windows.Threading;
@@ -39,7 +40,24 @@ namespace codeRR.Client.Wpf
 
             Application.Current.DispatcherUnhandledException += OnException;
             Application.Current.NavigationFailed += OnNavigationFailed;
+
+            AppDomain.CurrentDomain.UnhandledException += OnAppDomainException;
+
+            TaskScheduler.UnobservedTaskException += (s, e) =>
+            {
+                Err.Report(e.Exception, new{ErrTags= "UnobservedTaskException,unhandled-exception" });
+                if (ConfigExtensions.MarkAsHandled)
+                    e.SetObserved();
+            };
+
         }
+
+        static void OnAppDomainException(object sender, UnhandledExceptionEventArgs args)
+        {
+            Exception e = (Exception)args.ExceptionObject;
+            Err.Report(e, new {ErrTags = "unhandled-exception"});
+        }
+
 
         private static void OnException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
@@ -51,7 +69,7 @@ namespace codeRR.Client.Wpf
             if (!Err.Configuration.UserInteraction.AskUserForPermission)
                 ActionWrapper.SafeActionExecution(() => Err.UploadReport(dto));
 
-            var ctx = new WindowFactoryContext {Context = context, Report = dto};
+            var ctx = new WindowFactoryContext { Context = context, Report = dto };
             var dialog = WindowFactory(ctx);
             dialog.ShowDialog();
         }
@@ -59,10 +77,10 @@ namespace codeRR.Client.Wpf
         private static void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             var context = new WpfErrorReportContext(Instance, e.Exception, Application.Current);
-            var collection = new {e.Uri, e.ExtraData, e.Navigator}.ToContextCollection("NavigationData");
+            var collection = new { e.Uri, e.ExtraData, e.Navigator }.ToContextCollection("NavigationData");
 
             var report = Err.GenerateReport(context);
-            var cols = new List<ContextCollectionDTO>(report.ContextCollections) {collection};
+            var cols = new List<ContextCollectionDTO>(report.ContextCollections) { collection };
             report.ContextCollections = cols.ToArray();
             Err.UploadReport(report);
         }

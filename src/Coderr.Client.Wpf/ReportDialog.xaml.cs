@@ -13,8 +13,7 @@ namespace codeRR.Client.Wpf
 
         public ReportDialog(ErrorReportDTO dto, string exceptionMessage)
         {
-            if (dto == null) throw new ArgumentNullException(nameof(dto));
-            ErrorReportDetailsProvider.DtoReport = dto;
+            ErrorReportDetailsProvider.DtoReport = dto ?? throw new ArgumentNullException(nameof(dto));
             ErrorReportDetailsProvider.ExceptionMessage = exceptionMessage;
             InitializeComponent();
             var height = CalculateFormHeight();

@@ -16,7 +16,6 @@ namespace codeRR.Client.Wpf.Demo
                 "c3f786f9205c4572b5bbe4cfb81ba4f0");
 
             Err.Configuration.CatchWpfExceptions();
-            Err.Configuration.MarkExceptionsAsHandled();
             Err.Configuration.TakeScreenshots();
 
             Err.Configuration.UserInteraction.AskUserForDetails = true;

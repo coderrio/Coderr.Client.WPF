@@ -81,10 +81,7 @@ namespace codeRR.Client.Wpf.Presenters
 
         private void PublishFinishedReporting()
         {
-            if (FinishedReporting != null)
-            {
-                FinishedReporting(this, new EventArgs());
-            }
+            FinishedReporting?.Invoke(this, new EventArgs());
         }
     }
 }

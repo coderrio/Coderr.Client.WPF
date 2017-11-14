@@ -20,6 +20,8 @@ namespace codeRR.Client
         {
             if (configurator == null) throw new ArgumentNullException("configurator");
             Err.Configuration.ContextProviders.Add(new OpenWindowsCollector());
+            Err.Configuration.ContextProviders.Add(new ViewModelProvider());
+            MarkAsHandled = true;
             WpfErrorReporter.Activate();
         }
 
@@ -31,9 +33,9 @@ namespace codeRR.Client
         /// <summary>
         /// Will tell WPF that the exception is handled, i.e. will not crash the application.
         /// </summary>
-        public static void MarkExceptionsAsHandled(this CoderrConfiguration configurator)
+        public static void DoNotMarkExceptionsAsHandled(this CoderrConfiguration configurator)
         {
-            MarkAsHandled = true;
+            MarkAsHandled = false;
         }
 
         internal static bool MarkAsHandled { get; set; }

@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:presenters="clr-namespace:codeRR.Client.Wpf.Presenters"
         mc:Ignorable="d"
-        Title="Application error" SizeToContent="Width"
+        Title="Application error" 
+        SizeToContent="Width"
         Background="#F0F0F0"
+        Icon="Resources\AppIcon32.png"
         >
     
     <Window.Resources>

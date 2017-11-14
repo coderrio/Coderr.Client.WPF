@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextProviders\ScreenshotCollector.cs" />
+    <Compile Include="ContextProviders\ViewModelProvider.cs" />
     <Compile Include="Converters\BooleanToGridLengthConverter.cs" />
     <Compile Include="ConfigExtensions.cs" />
     <Compile Include="ContextProviders\OpenWindowsCollector.cs" />
@@ -137,7 +138,9 @@
   <ItemGroup>
     <Resource Include="Resources\bigstock-Output.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\AppIcon32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
