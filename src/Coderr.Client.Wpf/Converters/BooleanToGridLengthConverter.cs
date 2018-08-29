@@ -5,7 +5,7 @@ using System.Windows.Data;
 
 // ReSharper disable CompareOfFloatsByEqualityOperator
 
-namespace codeRR.Client.Wpf.Converters
+namespace Coderr.Client.Wpf.Converters
 {
     [ValueConversion(typeof(bool), typeof(GridLength))]
     public class BooleanToGridLengthConverter : IValueConverter

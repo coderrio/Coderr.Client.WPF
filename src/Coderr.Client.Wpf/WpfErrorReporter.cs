@@ -4,13 +4,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Navigation;
 using System.Windows.Threading;
-using codeRR.Client.Contracts;
-using codeRR.Client.Wpf.Contexts;
-using codeRR.Client.Wpf.Utils;
+using Coderr.Client.Contracts;
+using Coderr.Client.Wpf.Contexts;
+using Coderr.Client.Wpf.Utils;
 
 // ReSharper disable UseStringInterpolation
 
-namespace codeRR.Client.Wpf
+namespace Coderr.Client.Wpf
 {
     public class WpfErrorReporter
     {
@@ -30,6 +30,13 @@ namespace codeRR.Client.Wpf
         internal static Func<WindowFactoryContext, Window> WindowFactory { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public static bool ReportUnhandledAppDomainExceptions { get; set; }
+        public static bool ReportUnobservedTaskExceptions { get; set; }
+        public static bool SetUnobservedTaskExceptionsAsHandled { get; set; }
+
+        /// <summary>
         ///     Activate this library.
         /// </summary>
         public static void Activate()
@@ -40,15 +47,19 @@ namespace codeRR.Client.Wpf
 
             Application.Current.DispatcherUnhandledException += OnException;
             Application.Current.NavigationFailed += OnNavigationFailed;
+            if(ReportUnhandledAppDomainExceptions)
+                AppDomain.CurrentDomain.UnhandledException += OnAppDomainException;
 
-            AppDomain.CurrentDomain.UnhandledException += OnAppDomainException;
-
-            TaskScheduler.UnobservedTaskException += (s, e) =>
+            if (ReportUnobservedTaskExceptions)
             {
-                Err.Report(e.Exception, new{ErrTags= "UnobservedTaskException,unhandled-exception" });
-                if (ConfigExtensions.MarkAsHandled)
-                    e.SetObserved();
-            };
+                TaskScheduler.UnobservedTaskException += (s, e) =>
+                {
+                    Err.Report(e.Exception, new { ErrTags = "UnobservedTaskException,unhandled-exception" });
+                    if (SetUnobservedTaskExceptionsAsHandled)
+                        e.SetObserved();
+                };
+            }
+           
 
         }
 

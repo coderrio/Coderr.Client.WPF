@@ -4,13 +4,13 @@ using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using codeRR.Client.ContextProviders;
-using codeRR.Client.Contracts;
-using codeRR.Client.Reporters;
-using codeRR.Client.Wpf.Contexts;
-using codeRR.Client.Wpf.Utils;
+using Coderr.Client.ContextProviders;
+using Coderr.Client.Contracts;
+using Coderr.Client.Reporters;
+using Coderr.Client.Wpf.Contexts;
+using Coderr.Client.Wpf.Utils;
 
-namespace codeRR.Client.Wpf.ContextProviders
+namespace Coderr.Client.Wpf.ContextProviders
 {
     /// <summary>
     ///     Serializes all open windows into the context collection named <c>"OpenWindows"</c>

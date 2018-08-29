@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 
-namespace codeRR.Client.Wpf.Utils
+namespace Coderr.Client.Wpf.Utils
 {
     public static class WindowNameGenerator
     {

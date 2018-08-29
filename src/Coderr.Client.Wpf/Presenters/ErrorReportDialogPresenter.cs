@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Windows.Input;
-using codeRR.Client.ContextCollections;
-using codeRR.Client.Contracts;
-using codeRR.Client.Wpf.Utils;
+using Coderr.Client.ContextCollections;
+using Coderr.Client.Contracts;
+using Coderr.Client.Wpf.Utils;
 
 // ReSharper disable UseNullPropagation
 
 // ReSharper disable ConvertPropertyToExpressionBody
 
-namespace codeRR.Client.Wpf.Presenters
+namespace Coderr.Client.Wpf.Presenters
 {
     public class ErrorReportDialogPresenter
     {

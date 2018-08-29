@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows;
+using Coderr.Client;
+using Coderr.Client.Wpf;
 
 namespace codeRR.Client.Wpf.Demo
 {
@@ -10,13 +12,14 @@ namespace codeRR.Client.Wpf.Demo
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            var url = new Uri("http://localhost:50473/");
-            Err.Configuration.Credentials(url,
-                "fda370d3a4444964b52d785a9b26fe21",
-                "c3f786f9205c4572b5bbe4cfb81ba4f0");
+            var url = new Uri("http://localhost/coderr.oss/");
+            Err.Configuration.Credentials(url, 
+                "fda942de02b645db9d6788300fa56655", 
+                "5d8691c60768457e965502a833f2257d");
 
             Err.Configuration.CatchWpfExceptions();
             Err.Configuration.TakeScreenshots();
+            //Err.Configuration.DoNotMarkExceptionsAsHandled();
 
             Err.Configuration.UserInteraction.AskUserForDetails = true;
             Err.Configuration.UserInteraction.AskUserForPermission = true;

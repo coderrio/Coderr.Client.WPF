@@ -1,11 +1,10 @@
 ﻿using System;
-using codeRR.Client.Config;
-using codeRR.Client.Wpf;
-using codeRR.Client.Wpf.ContextProviders;
+using Coderr.Client.Config;
+using Coderr.Client.Wpf.ContextProviders;
 
 // Keeps in the root namespace to get intellisense
 // ReSharper disable once CheckNamespace
-namespace codeRR.Client
+namespace Coderr.Client.Wpf
 {
     /// <summary>
     ///     Use <c>Err.Configuration.CatchWpfExceptions()</c> to get started.
@@ -31,7 +30,7 @@ namespace codeRR.Client
         }
 
         /// <summary>
-        /// Will tell WPF that the exception is handled, i.e. will not crash the application.
+        /// Will NOT tell WPF that the exception is handled, i.e. will crash the application.
         /// </summary>
         public static void DoNotMarkExceptionsAsHandled(this CoderrConfiguration configurator)
         {

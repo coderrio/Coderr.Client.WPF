@@ -1,6 +1,6 @@
-﻿using codeRR.Client.Contracts;
+﻿using Coderr.Client.Contracts;
 
-namespace codeRR.Client.Wpf.Utils
+namespace Coderr.Client.Wpf.Utils
 {
     public static class ErrorReportDetailsProvider
     {

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "codeRR.Client.Wpf", "Coderr.Client.Wpf\Coderr.Client.Wpf.csproj", "{2F6212F0-A23F-4BD9-8FD1-52EE0522894E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coderr.Client.Wpf", "Coderr.Client.Wpf\Coderr.Client.Wpf.csproj", "{2F6212F0-A23F-4BD9-8FD1-52EE0522894E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "codeRR.Client.Wpf.Demo", "Coderr.Client.Wpf.Demo\Coderr.Client.Wpf.Demo.csproj", "{EB04D1FD-C4CC-4745-B361-BF260A8D8D3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coderr.Client.Wpf.Demo", "Coderr.Client.Wpf.Demo\Coderr.Client.Wpf.Demo.csproj", "{EB04D1FD-C4CC-4745-B361-BF260A8D8D3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

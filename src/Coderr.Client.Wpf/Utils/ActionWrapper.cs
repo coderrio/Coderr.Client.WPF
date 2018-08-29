@@ -3,7 +3,7 @@ using System.Windows;
 
 // ReSharper disable UseStringInterpolation
 
-namespace codeRR.Client.Wpf.Utils
+namespace Coderr.Client.Wpf.Utils
 {
     public static class ActionWrapper
     {

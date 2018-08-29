@@ -1,8 +1,8 @@
 ﻿using System;
-using codeRR.Client.Contracts;
-using codeRR.Client.Wpf.Utils;
+using Coderr.Client.Contracts;
+using Coderr.Client.Wpf.Utils;
 
-namespace codeRR.Client.Wpf
+namespace Coderr.Client.Wpf
 {
     /// <summary>
     /// Interaction logic for ReportDialog.xaml

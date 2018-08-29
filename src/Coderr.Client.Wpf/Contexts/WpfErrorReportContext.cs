@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
-using codeRR.Client.Reporters;
+using Coderr.Client.Reporters;
 
-namespace codeRR.Client.Wpf.Contexts
+namespace Coderr.Client.Wpf.Contexts
 {
     /// <summary>
     ///     Customization for WPF applications

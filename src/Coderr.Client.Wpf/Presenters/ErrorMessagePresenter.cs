@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace codeRR.Client.Wpf.Presenters
+namespace Coderr.Client.Wpf.Presenters
 {
     public class ErrorMessagePresenter : INotifyPropertyChanged
     {

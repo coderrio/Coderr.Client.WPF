@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:converters="clr-namespace:codeRR.Client.Wpf.Converters"
-                    xmlns:presenters="clr-namespace:codeRR.Client.Wpf.Presenters">
+                    xmlns:converters="clr-namespace:Coderr.Client.Wpf.Converters"
+                    xmlns:presenters="clr-namespace:Coderr.Client.Wpf.Presenters">
     
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ErrorMessageView.xaml"/>

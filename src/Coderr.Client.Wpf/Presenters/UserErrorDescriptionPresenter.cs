@@ -1,4 +1,4 @@
-﻿namespace codeRR.Client.Wpf.Presenters
+﻿namespace Coderr.Client.Wpf.Presenters
 {
     public class UserErrorDescriptionPresenter
     {

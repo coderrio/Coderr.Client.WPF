@@ -1,31 +1,36 @@
-﻿OneTrueError.Client installation
-=================================
+﻿Coderr WPF integration package
+==============================
 
-You've just installed the OneTrueError client. 
+This library reports all unhandled exceptions in WPF to Coderr.
+You also need to use a Coderr server.
 
-To get started add the following code to your application:
-
-	var url = new Uri("http://yourServer/onetrueerror/");
-	OneTrue.Configuration.Credentials(url, "yourAppKey", "yourSharedSecret");
-
-Once done you can report exceptions like this:
-
-	try
-	{
-		somelogic();
-	}
-	catch(SomeException ex)
-	{
-		OneTrue.Report(ex);
-	}
+https://coderr.io/documentation/getting-started/
 
 
-More information
-=================
+Reporting exceptions manually
+=============================
 
-* http://onetrueerror.com/ - About the service
-* http://onetrueerror.com/documentation/client/index.md - Client documentation
-* http://onetrueerror.com/documentation/server/index.md - Server documentation (to extend/change the OnTrueError server source code)
+This is one of many examples:
+
+    public void SomeMethod(PostViewModel model)
+    {
+        try
+        {
+            _somService.Execute(model);
+        }
+        catch (Exception ex)
+        {
+            Err.Report(ex, model);
+
+            //some custom handling
+        }
+
+        // some other code here...
+    }
 
 
-*this library requires that you have installed a OneTrueError server somewhere*
+Questions:
+http://discuss.coderr.io
+
+Guides and support
+https://coderr.io/guides-and-support/
