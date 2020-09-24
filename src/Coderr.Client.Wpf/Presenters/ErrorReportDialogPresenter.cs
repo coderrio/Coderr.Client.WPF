@@ -70,7 +70,7 @@ namespace Coderr.Client.Wpf.Presenters
 
             if (!string.IsNullOrEmpty(info) || !string.IsNullOrEmpty(email))
             {
-                Err.LeaveFeedback(_dto.ReportId, new UserSuppliedInformation(info, email));
+                Err.LeaveFeedback(_dto.ReportId, email, info);
             }
         }
 

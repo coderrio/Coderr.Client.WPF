@@ -1,9 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
-using Coderr.Client;
-using Coderr.Client.Wpf;
+using Coderr.Client.Wpf.Demo.Helpers;
+using log4net.Config;
 
-namespace codeRR.Client.Wpf.Demo
+namespace Coderr.Client.Wpf.Demo
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -12,13 +13,16 @@ namespace codeRR.Client.Wpf.Demo
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            var url = new Uri("http://localhost/coderr.oss/");
-            Err.Configuration.Credentials(url, 
-                "fda942de02b645db9d6788300fa56655", 
-                "5d8691c60768457e965502a833f2257d");
+            ConfigureLogging();
+
+            var url = new Uri("http://localhost:60473/");
+            Err.Configuration.Credentials(url,
+                "1a68bc3e123c48a3887877561b0982e2",
+                "bd73436e965c4f3bb0578f57c21fde69");
 
             Err.Configuration.CatchWpfExceptions();
             Err.Configuration.TakeScreenshots();
+            Err.Configuration.QueueReports = true;
             //Err.Configuration.DoNotMarkExceptionsAsHandled();
 
             Err.Configuration.UserInteraction.AskUserForDetails = true;
@@ -26,6 +30,14 @@ namespace codeRR.Client.Wpf.Demo
             Err.Configuration.UserInteraction.AskForEmailAddress = true;
 
             base.OnStartup(e);
+        }
+
+        private static void ConfigureLogging()
+        {
+            CoderrTraceListener.Activate();
+            XmlConfigurator.Configure(new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                "log4net.config")));
+            Err.Configuration.CatchLog4NetExceptions();
         }
     }
 }

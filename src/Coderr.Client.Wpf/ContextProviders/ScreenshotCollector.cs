@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Coderr.Client.ContextProviders;
+using Coderr.Client.ContextCollections;
 using Coderr.Client.Contracts;
 using Coderr.Client.Reporters;
 using Coderr.Client.Wpf.Contexts;
@@ -12,7 +12,7 @@ using Coderr.Client.Wpf.Utils;
 
 namespace Coderr.Client.Wpf.ContextProviders
 {
-    public class ScreenshotCollector : IContextInfoProvider
+    public class ScreenshotCollector : IContextCollectionProvider
     {
         public ContextCollectionDTO Collect(IErrorReporterContext context)
         {

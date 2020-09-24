@@ -6,6 +6,7 @@ namespace Coderr.Client.Wpf.Utils
     public class ActionCommand : ICommand
     {
         private readonly Action _action;
+        private bool _canExecuteFlag;
 
         public ActionCommand(Action action)
         {
@@ -13,7 +14,15 @@ namespace Coderr.Client.Wpf.Utils
             CanExecuteFlag = true;
         }
 
-        public bool CanExecuteFlag { get; set; }
+        public bool CanExecuteFlag
+        {
+            get => _canExecuteFlag;
+            set
+            {
+                _canExecuteFlag = value;
+                CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
 
         public bool CanExecute(object parameter)
         {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Coderr.Client.ContextProviders;
+using Coderr.Client.ContextCollections;
 using Coderr.Client.Contracts;
 using Coderr.Client.Reporters;
 using Coderr.Client.Wpf.Contexts;
@@ -8,7 +8,7 @@ using Coderr.Client.Wpf.Utils;
 
 namespace Coderr.Client.Wpf.ContextProviders
 {
-    internal class ViewModelProvider : IContextInfoProvider
+    internal class ViewModelProvider : IContextCollectionProvider
     {
         public ContextCollectionDTO Collect(IErrorReporterContext context)
         {
