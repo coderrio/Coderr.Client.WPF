@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Reflection;
 using System.Text;
 using log4net;
 
@@ -23,7 +24,24 @@ namespace Coderr.Client.Wpf.Demo.Helpers
 
         public static void Activate()
         {
-            Trace.Listeners.Add(new CoderrTraceListener());
+            var listener = new CoderrTraceListener();
+            Trace.Listeners.Add(listener);
+
+
+            PresentationTraceSources.Refresh();
+
+            // enable all WPF Trace sources (change this if you only want DataBindingSource)
+            foreach (var pi in typeof(PresentationTraceSources).GetProperties(BindingFlags.Static | BindingFlags.Public))
+            {
+                if (!typeof(TraceSource).IsAssignableFrom(pi.PropertyType))
+                {
+                    continue;
+                }
+
+                var ts = (TraceSource)pi.GetValue(null, null);
+                ts.Listeners.Add(listener);
+                ts.Switch.Level = SourceLevels.All;
+            }
         }
     }
 }

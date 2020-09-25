@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextProviders\ScreenshotCollector.cs" />
+    <Compile Include="ContextProviders\TraceLogProvider.cs" />
     <Compile Include="ContextProviders\ViewModelProvider.cs" />
     <Compile Include="Converters\BooleanToGridLengthConverter.cs" />
     <Compile Include="ConfigExtensions.cs" />
