@@ -15,7 +15,7 @@
     <tags>logger logging exceptions analysis WPF</tags>
     <releaseNotes>Now uses the new base library which supports all .NET framework editions.</releaseNotes>
     <dependencies>
-      <dependency id="Coderr.Client" version="1.0.7" />
+      <dependency id="Coderr.Client" version="2.0.1" />
     </dependencies>
   </metadata>
   <files>
