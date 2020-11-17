@@ -1,8 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-
-namespace codeRR.Client.Wpf.Demo.Views
+﻿namespace Coderr.Client.Wpf.Demo.Views
 {
     public partial class CommentView
     {

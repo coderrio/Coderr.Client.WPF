@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace codeRR.Client.Wpf.Demo.Helpers
+namespace Coderr.Client.Wpf.Demo.Helpers
 {
     public class ActionCommand : ICommand
     {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows;
-
-namespace codeRR.Client.Wpf.Demo
+﻿namespace Coderr.Client.Wpf.Demo
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Coderr.Client.ContextProviders;
+using Coderr.Client.ContextCollections;
 using Coderr.Client.Contracts;
 using Coderr.Client.Reporters;
 using Coderr.Client.Wpf.Contexts;
@@ -12,8 +12,12 @@ using Coderr.Client.Wpf.Utils;
 
 namespace Coderr.Client.Wpf.ContextProviders
 {
-    public class ScreenshotCollector : IContextInfoProvider
+    /// <summary>
+    /// Generates screenshots from the active, or all, windows.
+    /// </summary>
+    public class ScreenshotCollector : IContextCollectionProvider
     {
+        /// <inheritdoc />
         public ContextCollectionDTO Collect(IErrorReporterContext context)
         {
             var ctx = context as WpfErrorReportContext;

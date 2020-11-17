@@ -7,9 +7,13 @@ using System.Windows.Data;
 
 namespace Coderr.Client.Wpf.Converters
 {
+    /// <summary>
+    /// Converts our flags to different grid sizes. 
+    /// </summary>
     [ValueConversion(typeof(bool), typeof(GridLength))]
     public class BooleanToGridLengthConverter : IValueConverter
     {
+        /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var boolValue = (bool) value;
@@ -22,6 +26,7 @@ namespace Coderr.Client.Wpf.Converters
             return new GridLength(0);
         }
 
+        /// <inheritdoc />
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var gridLength = (GridLength) value;

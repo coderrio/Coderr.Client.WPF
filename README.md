@@ -1,17 +1,17 @@
 Integration library WPF
 =======================
 
-[![VSTS](https://1tcompany.visualstudio.com/_apis/public/build/definitions/75570083-b1ef-4e78-88e2-5db4982f756c/17/badge)]() [![NuGet](https://img.shields.io/nuget/dt/codeRR.Client.Wpf.svg?style=flat-square)]()
+[![VSTS](https://1tcompany.visualstudio.com/_apis/public/build/definitions/75570083-b1ef-4e78-88e2-5db4982f756c/17/badge)]() [![NuGet](https://img.shields.io/nuget/dt/Coderr.Client.Wpf.svg?style=flat-square)]()
 
-This library will detect all unhandled exceptions in WPF based applications and report them to your codeRR server (or your account at https://coderrapp.com).
+This library will detect all unhandled exceptions in WPF based applications and report them to the Coderr service (or your account at https://coderr.io).
 
-For more information about codeRR, visit our [homepage](https://coderrapp.com).
+For more information about Coderr, visit our [homepage](https://coderr.io).
 
 # Installation
 
-1. Download and install the [codeRR server](https://github.com/coderrapp/coderr.server) or create an account at [coderrapp.com](https://coderrapp.com)
+1. Download and install the [Coderr Community Server](https://github.com/coderrio/coderr.server), use our feaure complete [Coderr Premise Server](https://coderr.io/try/), or use our [Cloud Service](https://app.coderr.io) (free up 1000 error reports / month).
 2. Install this client library (using nuget `coderr.client.wpf`)
-3. Configure the credentials from your codeRR account in your `App.xaml.cs`.
+3. Configure the credentials from your Coderr account in your `App.xaml.cs`.
 
 ```csharp
 public partial class App : Application
@@ -19,8 +19,8 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
 
-        // codeRR configuration
-        var uri = new Uri("https://report.coderrapp.com/");
+        // Coderr configuration
+        var uri = new Uri("https://report.coderr.io/");
         Err.Configuration.Credentials(uri,
             "yourAppKey",
             "yourSharedSecret");
@@ -59,16 +59,12 @@ public void UpdatePost(int uid, ForumPost post)
 
 The context information will be attached as:
 
-![](https://coderrapp.com/images/features/custom-context.png)
+![](https://coderr.io/images/features/custom-context.png)
 
-[Read more...](https://coderrapp.com/features/)
-
-# Requirements
-
-You need to either install [codeRR Community Server](https://github.com/coderrapp/coderr.server) or use [codeRR Live](https://coderrapp.com/live).
+[Read more...](https://coderr.io/features/)
 
 # More information
 
-* [Questions/Help](http://discuss.coderrapp.com)
-* [Documentation](https://coderrapp.com/documentation/client/libraries/wpf/)
+* [Questions/Help](http://discuss.coderr.io)
+* [Documentation](https://coderr.io/documentation/client/libraries/wpf/)
 

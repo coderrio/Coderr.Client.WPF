@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Windows.Input;
-using codeRR.Client.Wpf.Demo.Helpers;
+using Coderr.Client.Wpf.Demo.Helpers;
+using log4net;
 
-namespace codeRR.Client.Wpf.Demo.ViewModels
+namespace Coderr.Client.Wpf.Demo.ViewModels
 {
     public class CommentViewModel : ObservableObject
     {
         private string _comment = "Hello world";
         private string _emailAddress = "hello@coderrapp.com";
+        private readonly ILog _logger = LogManager.GetLogger(typeof(CommentViewModel));
         private string _name = "jgauffin";
-
 
         public string Comment
         {
@@ -17,7 +18,8 @@ namespace codeRR.Client.Wpf.Demo.ViewModels
             set
             {
                 _comment = value;
-                RaisePropertyChangedEvent("Comment");
+                _logger.Debug("Changed Comment to " + value);
+                RaisePropertyChangedEvent();
             }
         }
 
@@ -27,9 +29,12 @@ namespace codeRR.Client.Wpf.Demo.ViewModels
             set
             {
                 _emailAddress = value;
-                RaisePropertyChangedEvent("EmailAddress");
+                _logger.Debug("Changed EmailAddress to " + value);
+                RaisePropertyChangedEvent();
             }
         }
+
+        public ICommand SendCommentCommand => new ActionCommand(SendComment);
 
         public string UserName
         {
@@ -37,11 +42,10 @@ namespace codeRR.Client.Wpf.Demo.ViewModels
             set
             {
                 _name = value;
-                RaisePropertyChangedEvent("UserName");
+                _logger.Debug("Changed UserName to " + value);
+                RaisePropertyChangedEvent();
             }
         }
-
-        public ICommand SendCommentCommand => new ActionCommand(SendComment);
 
         private void SendComment()
         {

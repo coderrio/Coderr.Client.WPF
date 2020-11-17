@@ -12,6 +12,9 @@ using Coderr.Client.Wpf.Utils;
 
 namespace Coderr.Client.Wpf
 {
+    /// <summary>
+    /// Main reporter class for the WPF library.
+    /// </summary>
     public class WpfErrorReporter
     {
         private static readonly WpfErrorReporter Instance = new WpfErrorReporter();
@@ -30,10 +33,18 @@ namespace Coderr.Client.Wpf
         internal static Func<WindowFactoryContext, Window> WindowFactory { get; set; }
 
         /// <summary>
-        /// 
+        /// Report exceptions which will terminate the application.
         /// </summary>
         public static bool ReportUnhandledAppDomainExceptions { get; set; }
+
+        /// <summary>
+        /// Report exceptions from .NET Tasks (running in non-UI threads).
+        /// </summary>
         public static bool ReportUnobservedTaskExceptions { get; set; }
+
+        /// <summary>
+        /// Mark exceptions in background tasks as handled (to prevent the application from crashing).
+        /// </summary>
         public static bool SetUnobservedTaskExceptionsAsHandled { get; set; }
 
         /// <summary>

@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using Coderr.Client.ContextProviders;
+using Coderr.Client.ContextCollections;
 using Coderr.Client.Contracts;
 using Coderr.Client.Reporters;
 using Coderr.Client.Wpf.Contexts;
@@ -15,7 +15,7 @@ namespace Coderr.Client.Wpf.ContextProviders
     /// <summary>
     ///     Serializes all open windows into the context collection named <c>"OpenWindows"</c>
     /// </summary>
-    public class OpenWindowsCollector : IContextInfoProvider
+    public class OpenWindowsCollector : IContextCollectionProvider
     {
         /// <summary>
         ///     Returns <c>OpenWindows</c>.
