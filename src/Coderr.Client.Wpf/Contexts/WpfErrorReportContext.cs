@@ -18,6 +18,7 @@ namespace Coderr.Client.Wpf.Contexts
         /// </summary>
         /// <param name="reporter">Class that caught the exception.</param>
         /// <param name="exception">Exception that was thrown.</param>
+        /// <param name="application">WPF application object.</param>
         public WpfErrorReportContext(object reporter, Exception exception, Application application) : base(reporter, exception)
         {
             MainWindow = application.MainWindow;
@@ -47,13 +48,24 @@ namespace Coderr.Client.Wpf.Contexts
             Dispatcher = Application.Current.Dispatcher;
         }
 
+        /// <summary>
+        /// WPF dispatcher.
+        /// </summary>
         public Dispatcher Dispatcher { get; set; }
 
+        /// <summary>
+        /// Properties from the WPF application context.
+        /// </summary>
         public IDictionary<string, object> ApplicationProperties { get; set; }
 
-
+        /// <summary>
+        /// Main window in the WPF application.
+        /// </summary>
         public Window MainWindow { get; set; }
 
+        /// <summary>
+        /// All open windows.
+        /// </summary>
         public IEnumerable<Window> Windows { get; set; }
     }
 }

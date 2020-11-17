@@ -12,8 +12,12 @@ using Coderr.Client.Wpf.Utils;
 
 namespace Coderr.Client.Wpf.ContextProviders
 {
+    /// <summary>
+    /// Generates screenshots from the active, or all, windows.
+    /// </summary>
     public class ScreenshotCollector : IContextCollectionProvider
     {
+        /// <inheritdoc />
         public ContextCollectionDTO Collect(IErrorReporterContext context)
         {
             var ctx = context as WpfErrorReportContext;

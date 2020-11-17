@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using Coderr.Client.Wpf.Demo.Helpers;
+using log4net;
 using log4net.Config;
 
 namespace Coderr.Client.Wpf.Demo
@@ -17,9 +18,9 @@ namespace Coderr.Client.Wpf.Demo
 
             var url = new Uri("http://localhost:60473/");
             Err.Configuration.Credentials(url,
-                "1a68bc3e123c48a3887877561b0982e2",
-                "bd73436e965c4f3bb0578f57c21fde69");
-
+                "3c15309ae70d45b194b08fdbc76b84ca",
+                "8bd1be1762a8425592775e1a19c99812");
+            
             Err.Configuration.CatchWpfExceptions();
             Err.Configuration.TakeScreenshots();
             Err.Configuration.QueueReports = true;
@@ -37,6 +38,7 @@ namespace Coderr.Client.Wpf.Demo
             CoderrTraceListener.Activate();
             XmlConfigurator.Configure(new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                 "log4net.config")));
+            var log = LogManager.GetLogger(typeof(App));
             Err.Configuration.CatchLog4NetExceptions();
         }
     }
