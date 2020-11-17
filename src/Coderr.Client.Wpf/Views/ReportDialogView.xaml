@@ -8,7 +8,8 @@
         <ResourceDictionary Source="UserErrorDescriptionView.xaml"/>
         <ResourceDictionary Source="NotificationControlView.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    
+
+    <BitmapImage x:Key="MyImageSource" UriSource="..\Resources\bigstock-Output.jpg" />
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     <converters:BooleanToGridLengthConverter x:Key="BooleanToGridLengthConverter"/>
     
@@ -31,7 +32,7 @@
                    Grid.RowSpan="4"
                    Stretch="UniformToFill"
                    StretchDirection="Both"
-                   Source="../Resources/bigstock-Output.jpg"
+                   Source="{StaticResource MyImageSource}"
                    Margin="1"
                />
 

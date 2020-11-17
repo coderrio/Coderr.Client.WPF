@@ -18,9 +18,9 @@ namespace Coderr.Client.Wpf.Demo
 
             var url = new Uri("http://localhost:60473/");
             Err.Configuration.Credentials(url,
-                "3c15309ae70d45b194b08fdbc76b84ca",
-                "8bd1be1762a8425592775e1a19c99812");
-            
+                "5a617e0773b94284bef33940e4bc8384",
+                "3fab63fb846c4dd289f67b0b3340fefc");
+
             Err.Configuration.CatchWpfExceptions();
             Err.Configuration.TakeScreenshots();
             Err.Configuration.QueueReports = true;
