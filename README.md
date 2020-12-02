@@ -7,11 +7,11 @@ This library will detect all unhandled exceptions in WPF based applications and 
 
 For more information about Coderr, visit our [homepage](https://coderr.io).
 
-# Installation
+# Reporting the first error
 
-1. Download and install the [Coderr Community Server](https://github.com/coderrio/coderr.server), use our feaure complete [Coderr Premise Server](https://coderr.io/try/), or use our [Cloud Service](https://app.coderr.io) (free up 1000 error reports / month).
-2. Install this client library (using nuget `coderr.client.wpf`)
-3. Configure the credentials from your Coderr account in your `App.xaml.cs`.
+First, follow [this guide](https://coderr.io/documentation/getting-started/).
+
+Then activate this library:
 
 ```csharp
 public partial class App : Application
@@ -39,9 +39,7 @@ public partial class App : Application
 }
 ```
 
-# Getting started
-
-Simply catch an exception and report it:
+And finally try to report an error:
 
 ```csharp
 public void UpdatePost(int uid, ForumPost post)
